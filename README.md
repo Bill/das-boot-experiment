@@ -5,6 +5,7 @@ This is an experiment using Docker (layer management mechanism) to give traditio
 ```
 # first we build
 $ docker build -t dbe .
+...
 # now inspect the output of the "link" step
 $ docker run -it --rm --entrypoint cat dbe target/all.out
 m1-f1
@@ -112,4 +113,4 @@ Successfully built 7ec938dce1e2
 
 As expected, Docker rebuilt the layers at steps 6,7, and 10. But unfortunately, it also rebuilt images at steps 8, and 9 as well. When building a Docker image (from a Dockerfile), once a line causes a cache miss, all subsequent lines do too.
 
-This means a simple Dockerfile will not suffice and instead, if we want to leverage Docker's nifty filesystem magic, we'll have to explore a different approach. Maybe docker commit could help us. It'd be nice to not have to write Go code to access the image+layer manipulation primitives directly.
+This means a simple Dockerfile will not suffice and instead, if we want to leverage Docker's nifty filesystem magic, we'll have to explore a different approach. Maybe [Docker commit](https://docs.docker.com/engine/reference/commandline/commit/) could help us. It'd be nice to not have to write Go code to access the image+layer manipulation primitives directly.
