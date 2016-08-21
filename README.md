@@ -117,3 +117,5 @@ This means a simple Dockerfile will not suffice and instead, if we want to lever
 
 * Docker Engine API: https://github.com/docker/engine-api
 * Docker Builder interface: https://github.com/docker/docker/tree/master/builder
+
+Maybe we'd build a cousin of Packer's Docker Builder: https://www.packer.io/docs/builders/docker.html
