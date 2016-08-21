@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# usage link file1 file2 ... > out
+# This command will concatenate all the input files to stdout (just like cat)
+cat $@

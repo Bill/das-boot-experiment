@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# usage: compile in-file > out-file
+# out-file will have the line "is compiled" added to the end
+cat <<EOF $1 -
+is compiled
+EOF
