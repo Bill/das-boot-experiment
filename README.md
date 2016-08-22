@@ -1,4 +1,10 @@
-This is an experiment using Docker (layer management mechanism) to give traditional builds the same key efficiency optimization traditionally offered by make(1), namely: only run a build action if a target (dependency) is "out of date" relative to its sources. Docker layer management is superior to make's traditional mechanism because the former is content-based whereas the latter is timestamp-based. Timestamp-based approaches suffer many pitfalls.
+This is an experiment using Docker (layer management mechanism) to give builds the same key efficiency optimization traditionally offered by make(1), namely: only run a build action if a target (dependency) is "out of date" relative to its sources. Docker layer management is superior to make's traditional mechanism because the former is content-based whereas the latter is timestamp-based. Timestamp-based approaches suffer many pitfalls.
+
+## Background
+
+The [build task as middleware philosophy of Clojure Boot](https://github.com/boot-clj/boot/wiki/Tasks) is elegant and powerful. Rather than operating directly on files (the filesystem), a Boot task operates on an immutable data structure, the [Clojure Boot Fileset](https://github.com/boot-clj/boot/wiki/Filesets). This leads to repeatable, efficient, builds, specified by modular, testable, maintainable task specifications.
+
+This is all very good. On the other hand, there is a lot of ceremony here. All your tasks must be expressed as highly stylized Clojure code. I wondered whether it might be possible to use Docker magic to achieve some of the same characteristics, but for more traditional, shell-oriented task specifications. More like the way make(1) works.
 
 ## Try It
 
